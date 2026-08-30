@@ -1,0 +1,46 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "enterprise-rag-agent"
+version = "0.1.0"
+description = "基于 LangGraph 的企业文档智能 Agent，包含 RAG、混合检索、重排、工具调用、记忆与可信度校验。"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "fastapi>=0.110",
+    "uvicorn[standard]>=0.29",
+    "pydantic>=2.6",
+    "langgraph>=0.2",
+    "langchain-core>=0.3",
+    "openai>=1.30",
+    "python-multipart>=0.0.9",
+    "pyyaml>=6.0",
+    "python-dotenv>=1.0",
+]
+
+[project.optional-dependencies]
+pdf = ["pypdf>=4.0"]
+docx = ["python-docx>=1.1"]
+chroma = ["chromadb>=0.5"]
+rerank = ["sentence-transformers>=2.7"]
+all = [
+    "pypdf>=4.0",
+    "python-docx>=1.1",
+    "chromadb>=0.5",
+    "sentence-transformers>=2.7",
+]
+
+[project.scripts]
+enterprise-rag-agent = "enterprise_rag_agent.__main__:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]

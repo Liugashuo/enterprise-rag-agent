@@ -1,0 +1,23 @@
+app_name: "Enterprise RAG Agent"
+llm_provider: "deepseek"
+model_name: "deepseek-chat"
+model_base_url: "https://api.deepseek.com/v1"
+embedding_provider: "hash"
+embedding_model: "text-embedding-3-small"
+embedding_base_url: ""
+embedding_dimension: 256
+vector_store_type: "json"
+vector_store_path: "data/vector_store"
+chunk_size: 800
+chunk_overlap: 120
+top_k: 6
+hybrid_alpha: 0.5
+rerank_enabled: true
+reranker_model: "keyword"
+max_agent_steps: 4
+context_max_tokens: 4000
+max_history_messages: 12
+summary_enabled: true
+evidence_min_score: 0.01
+host: "0.0.0.0"
+port: 8000
